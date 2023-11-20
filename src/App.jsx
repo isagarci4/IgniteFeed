@@ -33,7 +33,7 @@ const posts = [
       { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
       { type: 'link', content: 'jane.design/doctorcare' },
     ],
-    publishedAt: new Date('2023-05-03 20:00:00'),
+    publishedAt: new Date('2023-05-10 20:00:00'),
   },
 ]
 
@@ -45,14 +45,15 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post 
-          author="Isadora Garcia" 
-          content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi fugiat voluptatem voluptatum, quis, consequatur odit at alias quam voluptas iure illo. Harum officia explicabo, sequi voluptatum rem beatae eveniet quasi." 
-          />
-          <Post 
-            author="Diego Fernandes" 
-            content="Um novo post muito legal" 
-          />
+          {posts.map(post => {
+            return (
+              <Post 
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            )
+          })}
         </main>
       </div>
     </div>
