@@ -3,34 +3,38 @@ import { Avatar } from './Avatar'
 
 import styles from './Comment.module.css'
 
-export function Comment({ content }) {
-    return(
-      <div className={styles.comment}>
-        <Avatar hasBorder={false} src="https://github.com/isagarci4.png"/>
+export function Comment({ content, onDeleteComment }) {
+  function handleDeleteComment() {
+    onDeleteComment(content)
+  }
 
-        <div className={styles.commentBox}>
-          <div className={styles.commentContent}>
-            <header>
-              <div className={styles.authorAndTime}>
-                <strong>Isadora Garcia</strong>
-                <time title="11 de maio ás 08:13h" dateTime="2023-05-11 08:13:30">Cerca de 1h</time>
-              </div>
+  return(
+    <div className={styles.comment}>
+      <Avatar hasBorder={false} src="https://github.com/isagarci4.png"/>
 
-              <button title='Deletar comentário'>
-                <Trash size={24} />
-              </button>
-            </header>
+      <div className={styles.commentBox}>
+        <div className={styles.commentContent}>
+          <header>
+            <div className={styles.authorAndTime}>
+              <strong>Isadora Garcia</strong>
+              <time title="11 de maio ás 08:13h" dateTime="2023-05-11 08:13:30">Cerca de 1h</time>
+            </div>
 
-            <p>{content}</p>
-          </div>
-
-          <footer>
-            <button>
-              <ThumbsUp size={20}/>
-              Aplaudir <span>20</span>
+            <button onClick={handleDeleteComment} title='Deletar comentário'>
+              <Trash size={24} />
             </button>
-          </footer>
+          </header>
+
+          <p>{content}</p>
         </div>
+
+        <footer>
+          <button>
+            <ThumbsUp size={20}/>
+            Aplaudir <span>20</span>
+          </button>
+        </footer>
       </div>
-    )
+    </div>
+  )
 }
